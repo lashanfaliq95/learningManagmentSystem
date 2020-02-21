@@ -1,1 +1,15 @@
-<p>selection-menu works!</p>
+<div *ngIf="majorId">
+  <h1>Welcome {{ student.name }}, How may I help you today?</h1>
+  <form ngForm #form="ngForm" (submit)="onContinue(form)">
+    <div class="radio">
+      <label>
+        <input ngModel type="radio" name="major" [value]="major.id" />
+        {{ major.name }}
+      </label>
+    </div>
+    <button class="btn btn-primary">Continue</button>
+  </form>
+</div>
+<div *ngIf="!majorId">
+  Please select a major first!
+</div>

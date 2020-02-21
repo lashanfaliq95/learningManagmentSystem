@@ -38,7 +38,7 @@ export class MajorsComponent implements OnInit {
     if (form.value.major) {
       this.router.navigate(['/selection'], {
         queryParams: {
-          major: form.value.major
+          majorId: form.value.major
         }
       });
     }
