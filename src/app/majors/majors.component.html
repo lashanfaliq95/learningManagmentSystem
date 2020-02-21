@@ -1,9 +1,7 @@
-<div *ngIf="currentDegree">
-  <h3>
-    Welcome to BS.CSC. You have to further select the major you are enrolled in
-  </h3>
+<div *ngIf="currentMajors">
+  <h3>Welcome to {{ currentDegree }}. You have to further select the major you are enrolled in</h3>
   <form ngForm #form="ngForm" (submit)="onContinue(form)">
-    <div *ngFor="let major of majors" class="radio">
+    <div *ngFor="let major of currentMajors" class="radio">
       <label>
         <input ngModel type="radio" name="major" [value]="major.id" />
         {{ major.name }}
@@ -11,4 +9,7 @@
     </div>
     <button class="btn btn-primary">Continue</button>
   </form>
+</div>
+<div *ngIf="!currentMajors">
+  Please select a Degree First!
 </div>
