@@ -5,11 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './semester-map.component.html',
   styleUrls: ['./semester-map.component.scss']
 })
-export class SemesterMapComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+export class SemesterMapComponent {
+  studen = {
+    name: 'lashan'
   }
 
 }
