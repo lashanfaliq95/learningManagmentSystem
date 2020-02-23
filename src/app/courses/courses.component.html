@@ -1,11 +1,6 @@
-<h1>{{ specialization.name }}</h1>
-<div class="card">
-  <div class="card-header">
-    CSC 01 : Spartan summer
-  </div>
-  <div class="card-body">
-    Credits :1 subustitutes: CSS 01 prerequsites::
-  </div>
-</div>
-
-<div class="div1"></div>
+<h3>{{title}}</h3>
+<ul class="list-group">
+  <course *ngFor=" let course of courses" [courseId]="course.number" [courseName]="course.courseName">
+  </course>
+</ul>
+<button class="courseButton btn btn-primary">Finish</button>

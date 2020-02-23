@@ -1,13 +1,13 @@
 <div *ngIf="majorId">
   <h1>Welcome {{ student.name }}, How may I help you today?</h1>
   <form ngForm #form="ngForm" (submit)="onContinue(form)">
-    <div class="radio">
+    <div class="radio" *ngFor="let selection of selectionMapping">
       <label>
-        <input ngModel type="radio" name="major" [value]="major.id" />
-        {{ major.name }}
+        <input ngModel name="selection" type="radio" [value]="selection.id" />
+        {{ selection.message }}
       </label>
     </div>
-    <button class="btn btn-primary">Continue</button>
+    <button class="btn btn-primary">Submit</button>
   </form>
 </div>
 <div *ngIf="!majorId">
