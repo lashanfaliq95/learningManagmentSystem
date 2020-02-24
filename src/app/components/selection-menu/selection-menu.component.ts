@@ -1,5 +1,7 @@
+import { MajorsService } from "./../../services/majors.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { UserService } from "./../../services/user.service";
 
 @Component({
   selector: "selection-menu",
@@ -44,15 +46,16 @@ export class SelectionMenuComponent implements OnInit {
     }
   ];
 
-  constructor(private route: ActivatedRoute, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserService,
+    private majorService: MajorsService
+  ) {}
 
   ngOnInit() {
-    this.route.queryParamMap.subscribe();
-    this.majorId = this.route.snapshot.queryParamMap.get("majorId");
-    this.student = {
-      id: "1",
-      name: "Lashan"
-    };
+    this.majorId = this.majorService.getCurrentMajor();
+    this.student = this.userService.getUser();
   }
 
   onContinue({ form }) {

@@ -1,3 +1,6 @@
+import { CoursesService } from "./services/courses.service";
+import { UserService } from "./services/user.service";
+import { DegreeService } from "./services/degree.service";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
@@ -17,6 +20,7 @@ import { PrerequisiteCoursesComponent } from "./components/courses/prerequisite-
 import { RegisterCoursesComponent } from "./components/courses/register-courses/register-courses.component";
 import { CurrentSemesterCoursesComponent } from "./components/courses/current-semester-courses/current-semester-courses.component";
 import { SemesterMapComponent } from "./components/semester-map/semester-map.component";
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -35,8 +39,8 @@ import { SemesterMapComponent } from "./components/semester-map/semester-map.com
     CurrentSemesterCoursesComponent,
     SemesterMapComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  providers: [DegreeService, UserService, CoursesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

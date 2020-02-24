@@ -1,26 +1,30 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Output, EventEmitter, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
+
+import { DegreeService } from "./../../services/degree.service";
 
 @Component({
-  selector: 'degrees',
-  templateUrl: './degrees.component.html',
-  styleUrls: ['./degrees.component.scss']
+  selector: "degrees",
+  templateUrl: "./degrees.component.html",
+  styleUrls: ["./degrees.component.scss"]
 })
-export class DegreesComponent {
+export class DegreesComponent implements OnInit {
   @Output() degreeSelect = new EventEmitter();
+  degrees;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private service: DegreeService) {}
 
-  degrees = [
-    { id: '1', name: 'BS.CSC' },
-    { id: '2', name: 'BS.ITE' }
-  ];
+  ngOnInit() {
+    this.degrees = this.service.getDegrees();
+    console.log(this.service.getDegrees);
+  }
 
   onContinue({ form }) {
-    console.log('id', form.value);
-    const degreeName = form.value.degree === '1' ? this.degrees[0].name : this.degrees[1].name;
+    console.log("id", form.value);
+    const degreeName =
+      form.value.degree === "1" ? this.degrees[0].name : this.degrees[1].name;
     if (form.value.degree) {
-      this.router.navigate(['/majors'], {
+      this.router.navigate(["/majors"], {
         queryParams: {
           degreeId: form.value.degree,
           degreeName
