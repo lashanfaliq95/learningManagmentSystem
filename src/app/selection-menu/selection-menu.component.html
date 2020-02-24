@@ -1,7 +1,7 @@
-<div *ngIf="majorId">
+<div *ngIf="majorId" class="container radio-container">
   <h1>Welcome {{ student.name }}, How may I help you today?</h1>
   <form ngForm #form="ngForm" (submit)="onContinue(form)">
-    <div class="radio" *ngFor="let selection of selectionMapping">
+    <div class="radio form-group radio-container" *ngFor="let selection of selectionMapping">
       <label>
         <input ngModel name="selection" type="radio" [value]="selection.id" />
         {{ selection.message }}

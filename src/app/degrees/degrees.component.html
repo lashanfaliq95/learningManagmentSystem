@@ -1,10 +1,12 @@
-<h3>Please select the degree you are enrolled in.</h3>
-<form ngForm #form="ngForm" (submit)="onContinue(form)">
-  <div *ngFor="let degree of degrees" class="radio">
-    <label>
-      <input ngModel type="radio" name="degree" [value]="degree.id" />
-      {{ degree.name }}
-    </label>
-  </div>
-  <button class="btn btn-primary">Continue</button>
-</form>
+<div class="container  radio-container">
+  <h3>Please select the degree you are enrolled in.</h3>
+  <form ngForm #form="ngForm" (submit)="onContinue(form)">
+    <div *ngFor="let degree of degrees" class="radio form-group">
+      <label>
+        <input ngModel type="radio" name="degree" [value]="degree.id" />
+        {{ degree.name }}
+      </label>
+    </div>
+    <button class="btn btn-primary">Continue</button>
+  </form>
+</div>
