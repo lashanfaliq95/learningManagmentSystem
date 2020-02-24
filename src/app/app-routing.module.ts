@@ -1,15 +1,15 @@
-import { SelectionMenuComponent } from './selection-menu/selection-menu.component';
-import { LoginComponent } from './login/login.component';
-import { DegreesComponent } from './degrees/degrees.component';
+import { SelectionMenuComponent } from "./components/selection-menu/selection-menu.component";
+import { LoginComponent } from "./components/login/login.component";
+import { DegreesComponent } from "./components/degrees/degrees.component";
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MajorsComponent } from './majors/majors.component';
-import { CompletedCoursesComponent } from './courses/completed-courses/completed-courses.component'
-import { EligibleCoursesComponent } from './courses/eligible-courses/eligible-courses.component';
-import { PrerequisiteCoursesComponent } from './courses/prerequisite-courses/prerequisite-courses.component';
-import { RegisterCoursesComponent } from './courses/register-courses/register-courses.component';
-import { CurrentSemesterCoursesComponent } from './courses/current-semester-courses/current-semester-courses.component';
-import { SemesterMapComponent } from './semester-map/semester-map.component';
+import { MajorsComponent } from "./components/majors/majors.component";
+import { CompletedCoursesComponent } from "./components/courses/completed-courses/completed-courses.component";
+import { EligibleCoursesComponent } from "./components/courses/eligible-courses/eligible-courses.component";
+import { PrerequisiteCoursesComponent } from "./components/courses/prerequisite-courses/prerequisite-courses.component";
+import { RegisterCoursesComponent } from "./components/courses/register-courses/register-courses.component";
+import { CurrentSemesterCoursesComponent } from "./components/courses/current-semester-courses/current-semester-courses.component";
+import { SemesterMapComponent } from "./components/semester-map/semester-map.component";
 
 const routes: Routes = [
   { path: '', component: LoginComponent },

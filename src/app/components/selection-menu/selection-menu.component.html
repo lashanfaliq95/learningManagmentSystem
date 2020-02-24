@@ -1,0 +1,20 @@
+<div *ngIf="majorId" class="radio-container">
+  <h1>Welcome {{ student.name }}, How may I help you today?</h1>
+  <div class="selection-container">
+    <form ngForm #form="ngForm" (submit)="onContinue(form)">
+      <div
+        class="radio form-group radio-container"
+        *ngFor="let selection of selectionMapping"
+      >
+        <label>
+          <input ngModel name="selection" type="radio" [value]="selection.id" />
+          {{ selection.message }}
+        </label>
+      </div>
+      <button class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</div>
+<div *ngIf="!majorId">
+  Please select a major first!
+</div>
