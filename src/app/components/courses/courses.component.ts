@@ -9,10 +9,13 @@ import { Router } from "@angular/router";
 export class CoursesComponent {
   @Input() courses;
   @Input() title;
+  @Input() allowRegister;
+  @Input() showPreRequisites;
 
   constructor(private router: Router) {}
 
   onClickFinish() {
+    console.log("allowRegister", this.allowRegister);
     this.router.navigate(["/selection"]);
   }
 }

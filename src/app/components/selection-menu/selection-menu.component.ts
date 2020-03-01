@@ -15,39 +15,44 @@ export class SelectionMenuComponent implements OnInit {
   selectionMapping = [
     {
       id: "1",
-      message: "Show me the courses that I have completed",
-      redirectUrl: "/completedCourses"
-    },
-    {
-      id: "2",
-      message:
-        "Show me the eligible courses that I have to take on this semester",
-      redirectUrl: "/eligibleCourses"
-    },
-    {
-      id: "3",
-      message: "Show me the prerequisites for my degree",
+      message: "Show me the prerequisite for a selected course",
       redirectUrl: "/prerequisiteCourses"
     },
     {
+      id: "2",
+      message: "Show me the courses offered in the Fall semester only",
+      redirectUrl: "/fallSemesterCourses"
+    },
+    {
+      id: "3",
+      message: "Show me the courses offered in the Spring semester only",
+      redirectUrl: "/springSemesterCourses"
+    },
+    {
       id: "4",
-      message: "Map out all semesters",
+      message: "Map out all my semesters",
       redirectUrl: "/semesterMap"
     },
     {
       id: "5",
-      message: "Show me the courses offered in the current semester only",
-      redirectUrl: "/currentSemesterCourses"
+      message: "Show me how the remaining years look like",
+      redirectUrl: "/prerequisiteCourses"
     },
     {
       id: "6",
-      message: "Register me for the coming semester",
+      message:
+        "Show me how the the eligible courses that I can take on this semester.",
+      redirectUrl: "/eligibleCourses"
+    },
+    {
+      id: "7",
+      message:
+        "Send an email to my Advisor that I have fullfilled the pre-registration criteria",
       redirectUrl: "/registerCourses"
     }
   ];
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
     private userService: UserService,
     private majorService: MajorsService

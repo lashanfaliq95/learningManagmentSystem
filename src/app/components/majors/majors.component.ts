@@ -8,8 +8,8 @@ import { ActivatedRoute, Router } from "@angular/router";
   styleUrls: ["./majors.component.scss"]
 })
 export class MajorsComponent implements OnInit {
-  currentDegree = null;
-  currentMajors = null;
+  currentDegree;
+  currentMajors;
   constructor(
     private router: Router,
     private route: ActivatedRoute,

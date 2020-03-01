@@ -4,6 +4,7 @@ import { DegreeService } from "./services/degree.service";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -18,9 +19,12 @@ import { EligibleCoursesComponent } from "./components/courses/eligible-courses/
 import { CompletedCoursesComponent } from "./components/courses/completed-courses/completed-courses.component";
 import { PrerequisiteCoursesComponent } from "./components/courses/prerequisite-courses/prerequisite-courses.component";
 import { RegisterCoursesComponent } from "./components/courses/register-courses/register-courses.component";
-import { CurrentSemesterCoursesComponent } from "./components/courses/current-semester-courses/current-semester-courses.component";
 import { SemesterMapComponent } from "./components/semester-map/semester-map.component";
 import { HttpClientModule } from "@angular/common/http";
+import { RegisterableCourseComponent } from "./components/courses/registerable-course/registerable-course.component";
+import { PrerequisiteCourseComponent } from "./components/courses/prerequisite-course/prerequisite-course.component";
+import { CoursesInFallSemesterComponent } from "./components/courses/courses-in-fall-semester/courses-in-fall-semester.component";
+import { CoursesInSpringSemesterComponent } from "./components/courses/courses-in-spring-semester/courses-in-spring-semester.component";
 
 @NgModule({
   declarations: [
@@ -36,10 +40,19 @@ import { HttpClientModule } from "@angular/common/http";
     CompletedCoursesComponent,
     PrerequisiteCoursesComponent,
     RegisterCoursesComponent,
-    CurrentSemesterCoursesComponent,
-    SemesterMapComponent
+    SemesterMapComponent,
+    RegisterableCourseComponent,
+    PrerequisiteCourseComponent,
+    CoursesInFallSemesterComponent,
+    CoursesInSpringSemesterComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule
+  ],
   providers: [DegreeService, UserService, CoursesService],
   bootstrap: [AppComponent]
 })

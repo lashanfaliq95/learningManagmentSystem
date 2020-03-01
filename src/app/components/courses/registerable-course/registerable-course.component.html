@@ -1,0 +1,12 @@
+<li class="list-group-item register" (click)="onClickCourse()">
+  <span>{{ courseId }} {{ courseName }}</span>
+  <span class="oi oi-chevron-bottom" [hidden]="isRegisterShown"></span>
+  <span class="oi oi-chevron-top" [hidden]="!isRegisterShown"></span>
+</li>
+<li
+  class="list-group-item list-group-item-secondary register"
+  [hidden]="!isRegisterShown"
+>
+  <p>Register for the course</p>
+  <button class="btn btn-secondary">Register</button>
+</li>

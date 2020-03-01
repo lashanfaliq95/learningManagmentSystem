@@ -3,11 +3,11 @@ import { CoursesService } from "./../../../services/courses.service";
 import { UserService } from "../../../services/user.service";
 
 @Component({
-  selector: "app-prerequisite-courses",
-  templateUrl: "./prerequisite-courses.component.html",
-  styleUrls: ["./prerequisite-courses.component.scss"]
+  selector: "app-courses-in-spring-semester",
+  templateUrl: "./courses-in-spring-semester.component.html",
+  styleUrls: ["./courses-in-spring-semester.component.scss"]
 })
-export class PrerequisiteCoursesComponent implements OnInit {
+export class CoursesInSpringSemesterComponent implements OnInit {
   courses;
   title;
 
@@ -17,13 +17,12 @@ export class PrerequisiteCoursesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.courses = this.coursesService.getPrerequisiteCourses();
-    console.log(this.courses);
+    this.courses = this.coursesService.getEligibleCourses();
     const userName = this.userService.getUser().name || "student";
 
     this.title =
       "Welcome " +
       userName +
-      ".  Please select a course to see its prerequisite .";
+      ". The following are the courses offered during the Spring semester.";
   }
 }
