@@ -4,26 +4,59 @@ import { DegreesComponent } from "./components/degrees/degrees.component";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { MajorsComponent } from "./components/majors/majors.component";
-import { CompletedCoursesComponent } from "./components/courses/completed-courses/completed-courses.component";
 import { EligibleCoursesComponent } from "./components/courses/eligible-courses/eligible-courses.component";
 import { PrerequisiteCoursesComponent } from "./components/courses/prerequisite-courses/prerequisite-courses.component";
-import { RegisterCoursesComponent } from "./components/courses/register-courses/register-courses.component";
 import { SemesterMapComponent } from "./components/semester-map/semester-map.component";
 import { CoursesInFallSemesterComponent } from "./components/courses/courses-in-fall-semester/courses-in-fall-semester.component";
 import { CoursesInSpringSemesterComponent } from "./components/courses/courses-in-spring-semester/courses-in-spring-semester.component";
+import { RegisterStudentComponent } from "./components/register-student/register-student.component";
+import { CompletedAndRemainingCoursesComponent } from "./components/completed-and-remaining-courses/completed-and-remaining-courses.component";
 
 const routes: Routes = [
-  { path: "", component: LoginComponent },
-  { path: "degrees", component: DegreesComponent },
-  { path: "majors", component: MajorsComponent },
-  { path: "selection", component: SelectionMenuComponent },
-  { path: "completedCourses", component: CompletedCoursesComponent },
-  { path: "eligibleCourses", component: EligibleCoursesComponent },
-  { path: "prerequisiteCourses", component: PrerequisiteCoursesComponent },
-  { path: "registerCourses", component: RegisterCoursesComponent },
-  { path: "semesterMap", component: SemesterMapComponent },
-  { path: "fallSemesterCourses", component: CoursesInFallSemesterComponent },
-  { path: "springSemesterCourses", component: CoursesInSpringSemesterComponent }
+  {
+    path: "",
+    component: LoginComponent
+  },
+  {
+    path: "degrees",
+    component: DegreesComponent
+  },
+  {
+    path: "majors",
+    component: MajorsComponent
+  },
+  {
+    path: "selection",
+    component: SelectionMenuComponent
+  },
+  {
+    path: "eligibleCourses",
+    component: EligibleCoursesComponent
+  },
+  {
+    path: "prerequisiteCourses",
+    component: PrerequisiteCoursesComponent
+  },
+  {
+    path: "semesterMap",
+    component: SemesterMapComponent
+  },
+  {
+    path: "fallSemesterCourses",
+    component: CoursesInFallSemesterComponent
+  },
+  {
+    path: "springSemesterCourses",
+    component: CoursesInSpringSemesterComponent
+  },
+  {
+    path: "registerStudent",
+    component: RegisterStudentComponent
+  },
+  {
+    path: "completedAndRemainingCourses",
+    component: CompletedAndRemainingCoursesComponent
+  }
 ];
 
 @NgModule({

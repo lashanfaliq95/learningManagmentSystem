@@ -1,0 +1,53 @@
+<div class="container">
+  <h3>{{ title }}</h3>
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="2" scope="col">Courses you have covered so far</th>
+        </tr>
+        <tr>
+          <th>Courses</th>
+          <th>Credits</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          class="table-success"
+          *ngFor="let completedCourse of completedCourses"
+        >
+          <td>
+            <span>{{ completedCourse.number }}</span>
+          </td>
+          <td>
+            <span>{{ completedCourse.credits }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table">
+      <thead>
+        <tr>
+          <th colspan="2" scope="col">Remaining courses</th>
+        </tr>
+        <tr>
+          <th>Courses</th>
+          <th>AcademicTerm</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let completedCourse of completedCourses">
+          <td>
+            <span>{{ completedCourse.number }}</span>
+          </td>
+          <td>
+            <span>{{ completedCourse.AcademicTerm }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn btn-primary" (click)="onClickFinish()">
+    Finish
+  </button>
+</div>

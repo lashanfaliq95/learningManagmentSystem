@@ -16,15 +16,15 @@ import { CourseComponent } from "./components/courses/course/course.component";
 import { MajorsComponent } from "./components/majors/majors.component";
 import { SelectionMenuComponent } from "./components/selection-menu/selection-menu.component";
 import { EligibleCoursesComponent } from "./components/courses/eligible-courses/eligible-courses.component";
-import { CompletedCoursesComponent } from "./components/courses/completed-courses/completed-courses.component";
 import { PrerequisiteCoursesComponent } from "./components/courses/prerequisite-courses/prerequisite-courses.component";
-import { RegisterCoursesComponent } from "./components/courses/register-courses/register-courses.component";
 import { SemesterMapComponent } from "./components/semester-map/semester-map.component";
 import { HttpClientModule } from "@angular/common/http";
 import { RegisterableCourseComponent } from "./components/courses/registerable-course/registerable-course.component";
 import { PrerequisiteCourseComponent } from "./components/courses/prerequisite-course/prerequisite-course.component";
 import { CoursesInFallSemesterComponent } from "./components/courses/courses-in-fall-semester/courses-in-fall-semester.component";
 import { CoursesInSpringSemesterComponent } from "./components/courses/courses-in-spring-semester/courses-in-spring-semester.component";
+import { RegisterStudentComponent } from "./components/register-student/register-student.component";
+import { CompletedAndRemainingCoursesComponent } from "./components/completed-and-remaining-courses/completed-and-remaining-courses.component";
 
 @NgModule({
   declarations: [
@@ -37,14 +37,14 @@ import { CoursesInSpringSemesterComponent } from "./components/courses/courses-i
     MajorsComponent,
     SelectionMenuComponent,
     EligibleCoursesComponent,
-    CompletedCoursesComponent,
     PrerequisiteCoursesComponent,
-    RegisterCoursesComponent,
     SemesterMapComponent,
     RegisterableCourseComponent,
     PrerequisiteCourseComponent,
     CoursesInFallSemesterComponent,
-    CoursesInSpringSemesterComponent
+    CoursesInSpringSemesterComponent,
+    RegisterStudentComponent,
+    CompletedAndRemainingCoursesComponent
   ],
   imports: [
     BrowserModule,

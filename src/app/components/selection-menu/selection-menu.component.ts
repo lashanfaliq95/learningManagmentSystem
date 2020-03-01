@@ -36,7 +36,7 @@ export class SelectionMenuComponent implements OnInit {
     {
       id: "5",
       message: "Show me how the remaining years look like",
-      redirectUrl: "/prerequisiteCourses"
+      redirectUrl: "/completedAndRemainingCourses"
     },
     {
       id: "6",
@@ -48,7 +48,7 @@ export class SelectionMenuComponent implements OnInit {
       id: "7",
       message:
         "Send an email to my Advisor that I have fullfilled the pre-registration criteria",
-      redirectUrl: "/registerCourses"
+      redirectUrl: "/registerStudent"
     }
   ];
 

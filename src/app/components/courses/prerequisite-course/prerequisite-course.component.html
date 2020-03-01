@@ -1,4 +1,4 @@
-<li class="list-group-item register" (click)="onClickCourse()">
+<li class="list-group-item togglable-course" (click)="onClickCourse()">
   <span>{{ courseId }} {{ courseName }}</span>
   <span class="oi oi-chevron-bottom" *ngIf="!isPreRequisitesShown"></span>
   <span class="oi oi-chevron-top" *ngIf="isPreRequisitesShown"></span>
