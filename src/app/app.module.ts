@@ -25,6 +25,7 @@ import { CoursesInFallSemesterComponent } from "./components/courses/courses-in-
 import { CoursesInSpringSemesterComponent } from "./components/courses/courses-in-spring-semester/courses-in-spring-semester.component";
 import { RegisterStudentComponent } from "./components/register-student/register-student.component";
 import { CompletedAndRemainingCoursesComponent } from "./components/completed-and-remaining-courses/completed-and-remaining-courses.component";
+import { CoursesSummaryComponent } from "./components/courses-summary/courses-summary.component";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { CompletedAndRemainingCoursesComponent } from "./components/completed-an
     CoursesInFallSemesterComponent,
     CoursesInSpringSemesterComponent,
     RegisterStudentComponent,
-    CompletedAndRemainingCoursesComponent
+    CompletedAndRemainingCoursesComponent,
+    CoursesSummaryComponent
   ],
   imports: [
     BrowserModule,
