@@ -1,5 +1,8 @@
-<div *ngIf="currentMajors" class="container radio-container">
-  <h3>Welcome to {{ currentDegree }}. You have to further select the major you are enrolled in</h3>
+<div *ngIf="currentMajors" class="container radio-container card">
+  <h3>
+    Welcome to {{ currentDegree }}. You have to further select the major you are
+    enrolled in
+  </h3>
   <form ngForm #form="ngForm" (submit)="onContinue(form)">
     <div *ngFor="let major of currentMajors" class="radio form-group">
       <label>

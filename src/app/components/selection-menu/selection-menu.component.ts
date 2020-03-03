@@ -1,6 +1,6 @@
 import { MajorsService } from "./../../services/majors.service";
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { Router } from "@angular/router";
 import { UserService } from "./../../services/user.service";
 
 @Component({
