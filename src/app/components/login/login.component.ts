@@ -7,10 +7,22 @@ import { Router } from "@angular/router";
   styleUrls: ["./login.component.scss"]
 })
 export class LoginComponent {
+  error;
   constructor(private router: Router) {}
 
   onClickLogin(f) {
     console.log(f.form.value);
-    this.router.navigate(["/degrees"]);
+    if (
+      f.form.value.userName === "admin" &&
+      f.form.value.password === "admin"
+    ) {
+      this.router.navigate(["/degrees"]);
+    } else {
+      this.error = true;
+    }
+  }
+
+  onFocus() {
+    this.error = false;
   }
 }

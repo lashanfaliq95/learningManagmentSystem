@@ -1,0 +1,46 @@
+<div class="container">
+  <h3 class="center-text">
+    Bachelor of Science in Computer Science<br />
+    {{ currentDegree.name }}
+  </h3>
+  <div class="table table-bordered">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Course Number</th>
+          <th scope="col">Substitute</th>
+          <th scope="col">Status</th>
+          <th scope="col">First Academic Year</th>
+          <th scope="col">Credits</th>
+          <th scope="col">Prerequisite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of allCourses">
+          <td>
+            {{ course.number }}
+            <span
+              class="oi oi-media-stop icon-green"
+              *ngIf="course.eligible"
+            ></span>
+          </td>
+          <td>{{ course.Substitute }}</td>
+          <td>
+            <span
+              class="oi oi-circle-check icon-green"
+              *ngIf="course.registered"
+            ></span>
+          </td>
+          <td>{{ course.courseName }}</td>
+          <td>{{ course.credits }}</td>
+          <td>
+            {{ (course.prerequisites && course.prerequisites.name) || null }}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="courseButton btn btn-primary" (click)="onClickFinish()">
+    Finish
+  </button>
+</div>

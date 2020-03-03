@@ -6,17 +6,24 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 })
 export class DegreeService {
   private url = "localhost";
+  degrees;
+  currentDegreeId;
 
   constructor(private http: HttpClient) {}
 
   getDegrees() {
-    return [
+    this.degrees = [
       { id: "1", name: "BS.CSC" },
       { id: "2", name: "BS.ITE" }
     ];
+    return this.degrees;
+  }
+
+  setCurrentDegree(id) {
+    this.currentDegreeId = id;
   }
 
   getCurrentDegree() {
-    return { id: "1", name: "BS.CSC" };
+    return this.degrees.filter(degree => degree.id === this.currentDegreeId)[0];
   }
 }

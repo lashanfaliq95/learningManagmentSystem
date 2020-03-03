@@ -49,6 +49,11 @@ export class SelectionMenuComponent implements OnInit {
       message:
         "Send an email to my Advisor that I have fullfilled the pre-registration criteria",
       redirectUrl: "/registerStudent"
+    },
+    {
+      id: "8",
+      message: "Summary of Courses",
+      redirectUrl: "/summaryOfComponents"
     }
   ];
 

@@ -21,12 +21,14 @@ export class DegreesComponent implements OnInit {
 
   onContinue({ form }) {
     console.log("id", form.value);
+    const degreeId = form.value.degree;
+    this.service.setCurrentDegree(degreeId);
     const degreeName =
-      form.value.degree === "1" ? this.degrees[0].name : this.degrees[1].name;
+      degreeId === "1" ? this.degrees[0].name : this.degrees[1].name;
     if (form.value.degree) {
       this.router.navigate(["/majors"], {
         queryParams: {
-          degreeId: form.value.degree,
+          degreeId,
           degreeName
         }
       });
