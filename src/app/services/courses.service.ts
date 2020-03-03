@@ -30,6 +30,98 @@ export class CoursesService {
       AcademicTerm: "2",
       courseName: "Applied sceience Seminar",
       registered: true
+    },
+    {
+      id: "1",
+      number: "CSC 01",
+      prerequisites: null,
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "1",
+      courseName: "Spartan summer",
+      registered: true
+    },
+    {
+      id: "2",
+      number: "CSC 280",
+      prerequisites: [
+        { id: "3", name: "CSC 260" },
+        { id: "4", name: "CSC 270" }
+      ],
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "2",
+      courseName: "Applied sceience Seminar",
+      registered: true
+    },
+    {
+      id: "1",
+      number: "CSC 01",
+      prerequisites: null,
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "1",
+      courseName: "Spartan summer",
+      registered: true
+    },
+    {
+      id: "2",
+      number: "CSC 280",
+      prerequisites: [
+        { id: "3", name: "CSC 260" },
+        { id: "4", name: "CSC 270" }
+      ],
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "2",
+      courseName: "Applied sceience Seminar",
+      registered: true
+    },
+    {
+      id: "1",
+      number: "CSC 01",
+      prerequisites: null,
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "1",
+      courseName: "Spartan summer",
+      registered: true
+    },
+    {
+      id: "2",
+      number: "CSC 280",
+      prerequisites: [
+        { id: "3", name: "CSC 260" },
+        { id: "4", name: "CSC 270" }
+      ],
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "2",
+      courseName: "Applied sceience Seminar",
+      registered: true
+    },
+    {
+      id: "1",
+      number: "CSC 01",
+      prerequisites: null,
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "1",
+      courseName: "Spartan summer",
+      registered: true
+    },
+    {
+      id: "2",
+      number: "CSC 280",
+      prerequisites: [
+        { id: "3", name: "CSC 260" },
+        { id: "4", name: "CSC 270" }
+      ],
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "2",
+      courseName: "Applied sceience Seminar",
+      registered: true
     }
   ];
 
@@ -133,6 +225,116 @@ export class CoursesService {
   ];
 
   allCourses = [
+    {
+      id: "1",
+      number: "CSC 01",
+      prerequisites: null,
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "1",
+      courseName: "Spartan summer",
+      registered: true,
+      eligible: false
+    },
+    {
+      id: "2",
+      number: "CSC 280",
+      prerequisites: { id: "3", name: "CSC 260" },
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "2",
+      courseName: "Applied sceience Seminar",
+      registered: false,
+      eligible: true
+    },
+    {
+      id: "1",
+      number: "CSC 01",
+      prerequisites: null,
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "1",
+      courseName: "Spartan summer",
+      registered: true,
+      eligible: false
+    },
+    {
+      id: "2",
+      number: "CSC 280",
+      prerequisites: { id: "3", name: "CSC 260" },
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "2",
+      courseName: "Applied sceience Seminar",
+      registered: false,
+      eligible: true
+    },
+    {
+      id: "1",
+      number: "CSC 01",
+      prerequisites: null,
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "1",
+      courseName: "Spartan summer",
+      registered: true,
+      eligible: false
+    },
+    {
+      id: "2",
+      number: "CSC 280",
+      prerequisites: { id: "3", name: "CSC 260" },
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "2",
+      courseName: "Applied sceience Seminar",
+      registered: false,
+      eligible: true
+    },
+    {
+      id: "1",
+      number: "CSC 01",
+      prerequisites: null,
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "1",
+      courseName: "Spartan summer",
+      registered: true,
+      eligible: false
+    },
+    {
+      id: "2",
+      number: "CSC 280",
+      prerequisites: { id: "3", name: "CSC 260" },
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "2",
+      courseName: "Applied sceience Seminar",
+      registered: false,
+      eligible: true
+    },
+    {
+      id: "1",
+      number: "CSC 01",
+      prerequisites: null,
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "1",
+      courseName: "Spartan summer",
+      registered: true,
+      eligible: false
+    },
+    {
+      id: "2",
+      number: "CSC 280",
+      prerequisites: { id: "3", name: "CSC 260" },
+      credits: 3,
+      Substitute: "CSS 01",
+      AcademicTerm: "2",
+      courseName: "Applied sceience Seminar",
+      registered: false,
+      eligible: true
+    },
     {
       id: "1",
       number: "CSC 01",
