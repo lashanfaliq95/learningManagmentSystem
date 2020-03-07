@@ -8,6 +8,7 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent {
   error;
+  isStudent = true;
   constructor(private router: Router) {}
 
   onClickLogin(f) {
@@ -24,5 +25,13 @@ export class LoginComponent {
 
   onFocus() {
     this.error = false;
+  }
+
+  onClickLoginAsAdvisor() {
+    this.isStudent = false;
+  }
+
+  onClickLoginAsStudent() {
+    this.isStudent = true;
   }
 }

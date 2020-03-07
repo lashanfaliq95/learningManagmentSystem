@@ -1,6 +1,7 @@
 <div class="login-container">
   <form ngForm #f="ngForm" (submit)="onClickLogin(f)">
-    <h3>Login</h3>
+    <h3 [hidden]="!isStudent">Login As Student</h3>
+    <h3 [hidden]="isStudent">Login As Advisor</h3>
 
     <div class="form-group">
       <input
@@ -32,7 +33,22 @@
       <input type="submit" class="btnSubmit" value="Login" />
     </div>
     <div class="form-group">
-      <a routerLink="/advisorLogin  " class="ForgetPwd">Login as Advisor</a>
+      <a
+        (click)="onClickLoginAsAdvisor()"
+        class="ForgetPwd"
+        [hidden]="!isStudent"
+      >
+        Login as Advisor
+      </a>
+    </div>
+    <div class="form-group">
+      <a
+        (click)="onClickLoginAsStudent()"
+        class="ForgetPwd"
+        [hidden]="isStudent"
+      >
+        Login as Student
+      </a>
     </div>
   </form>
 </div>
