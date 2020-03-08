@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
-import { CoursesService } from "./../../services/courses.service";
-import { DegreeService } from "./../../services/degree.service";
-import { UserService } from "../../services/user.service";
+import { CoursesService } from "./../../../services/courses.service";
+import { DegreeService } from "./../../../services/degree.service";
+import { UserService } from "../../../services/user.service";
 
 @Component({
   selector: "app-summary-of-courses",

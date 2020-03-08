@@ -39,6 +39,10 @@ export class UserService {
       });
   }
 
+  logout() {
+    this.authenticatedUser = null;
+  }
+
   getUser() {
     return this.authenticatedUser;
   }

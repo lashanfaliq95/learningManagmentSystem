@@ -11,6 +11,7 @@ export class LoginComponent {
   error;
   isStudent = true;
   constructor(private router: Router, private userService: UserService) {
+    this.userService.logout();
     this.userService.getError().subscribe(error => {
       this.error = error;
     });

@@ -11,7 +11,7 @@ import { CoursesInFallSemesterComponent } from "./components/courses/courses-in-
 import { CoursesInSpringSemesterComponent } from "./components/courses/courses-in-spring-semester/courses-in-spring-semester.component";
 import { RegisterStudentComponent } from "./components/register-student/register-student.component";
 import { CompletedAndRemainingCoursesComponent } from "./components/completed-and-remaining-courses/completed-and-remaining-courses.component";
-import { SummaryOfCoursesComponent } from "./components/summary-of-courses/summary-of-courses.component";
+import { SummaryOfCoursesComponent } from "./components/courses/summary-of-courses/summary-of-courses.component";
 
 const routes: Routes = [
   {
