@@ -64,8 +64,13 @@ export class SelectionMenuComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.majorId = this.majorService.getCurrentMajor();
     this.student = this.userService.getUser();
+    console.log(this.student);
+    if (!this.student) {
+      this.router.navigate(["/"]);
+    } else {
+      this.majorId = this.majorService.getCurrentMajor();
+    }
   }
 
   onContinue({ form }) {

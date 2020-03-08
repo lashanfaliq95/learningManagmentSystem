@@ -1,4 +1,7 @@
-<div *ngIf="currentMajors" class="container radio-container card">
+<div
+  *ngIf="currentMajors && currentMajors.length"
+  class="container radio-container card"
+>
   <h3>
     Welcome to {{ currentDegree.name }}. You have to further select the major
     you are enrolled in
@@ -13,6 +16,6 @@
     <button class="btn btn-primary">Continue</button>
   </form>
 </div>
-<div *ngIf="!currentMajors">
-  Please select a Degree First!
+<div *ngIf="currentMajors && currentMajors.length === 0">
+  No Majors!
 </div>

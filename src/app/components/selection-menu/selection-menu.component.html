@@ -1,5 +1,5 @@
 <div *ngIf="majorId" class="selection-outer-container">
-  <h1>Welcome {{ student.name }}, How may I help you today?</h1>
+  <h1>Welcome {{ student.email }}, How may I help you today?</h1>
   <div class="selection-container">
     <form ngForm #form="ngForm" (submit)="onContinue(form)">
       <div class="radio form-group" *ngFor="let selection of selectionMapping">

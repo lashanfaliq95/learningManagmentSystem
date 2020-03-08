@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CoursesService } from "./../../../services/courses.service";
 import { UserService } from "../../../services/user.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-prerequisite-courses",
@@ -13,17 +14,20 @@ export class PrerequisiteCoursesComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private coursesService: CoursesService
+    private coursesService: CoursesService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
-    this.courses = this.coursesService.getPrerequisiteCourses();
-    console.log(this.courses);
-    const userName = this.userService.getUser().name || "student";
-
+    const student = this.userService.getUser();
+    if (!student) {
+      this.router.navigate(["/"]);
+    } else {
+      this.courses = this.coursesService.getPrerequisiteCourses();
+    }
     this.title =
       "Welcome " +
-      userName +
+      student.email +
       ".  Please select a course to see its prerequisite .";
   }
 }

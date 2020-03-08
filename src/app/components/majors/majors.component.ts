@@ -2,6 +2,7 @@ import { DegreeService } from "./../../services/degree.service";
 import { MajorsService } from "./../../services/majors.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { UserService } from "./../../services/user.service";
 
 @Component({
   selector: "majors",
@@ -13,15 +14,22 @@ export class MajorsComponent implements OnInit {
   currentMajors;
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
     private majorService: MajorsService,
-    private degreeService: DegreeService
-  ) {}
+    private degreeService: DegreeService,
+    private userService: UserService
+  ) {
+    if (!this.userService.getUser()) {
+      this.router.navigate(["/"]);
+    } else {
+      this.majorService
+        .updateMajors()
+        .subscribe(majors => (this.currentMajors = majors));
+    }
+  }
 
   ngOnInit() {
-    this.route.queryParamMap.subscribe();
     this.currentDegree = this.degreeService.getCurrentDegree();
-    this.currentMajors = this.majorService.getMajors(this.currentDegree.id);
+    this.majorService.getMajors(this.currentDegree.id);
   }
 
   onContinue({ form }) {
