@@ -421,4 +421,8 @@ export class CoursesService {
   updateAllCourses() {
     return this.allCourses.asObservable();
   }
+
+  registerCourse() {
+    this.http.post(this.url, {});
+  }
 }

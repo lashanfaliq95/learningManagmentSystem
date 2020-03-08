@@ -16,6 +16,6 @@
     <button class="btn btn-primary">Continue</button>
   </form>
 </div>
-<div *ngIf="currentMajors && currentMajors.length === 0">
-  No Majors!
+<div *ngIf="currentMajors && currentMajors.length === 0" class="warning">
+  Something Went Wrong! Please try again later.
 </div>
