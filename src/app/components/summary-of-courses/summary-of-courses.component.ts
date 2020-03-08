@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 
 import { CoursesService } from "./../../services/courses.service";
 import { DegreeService } from "./../../services/degree.service";
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: "app-summary-of-courses",
@@ -15,13 +16,22 @@ export class SummaryOfCoursesComponent implements OnInit {
   constructor(
     private router: Router,
     private degreeService: DegreeService,
-    private courseService: CoursesService
-  ) {}
+    private courseService: CoursesService,
+    private userService: UserService
+  ) {
+    const student = this.userService.getUser();
+    if (!student) {
+      this.router.navigate(["/"]);
+    } else {
+      this.courseService
+        .updateAllCourses()
+        .subscribe(courses => (this.allCourses = courses));
+    }
+  }
 
   ngOnInit(): void {
     this.currentDegree = this.degreeService.getCurrentDegree();
-    this.allCourses = this.courseService.getAllCourses();
-    console.log(this.currentDegree);
+    this.courseService.getAllCourses();
   }
 
   onClickFinish() {

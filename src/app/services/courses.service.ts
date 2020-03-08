@@ -419,6 +419,6 @@ export class CoursesService {
   }
 
   updateAllCourses() {
-    this.allCourses.asObservable();
+    return this.allCourses.asObservable();
   }
 }

@@ -10,7 +10,6 @@ export class RegisterableCourseComponent {
   @Input() courseName;
   isRegisterShown = false;
   onClickCourse() {
-    console.log("click");
     this.isRegisterShown = !this.isRegisterShown;
   }
 }

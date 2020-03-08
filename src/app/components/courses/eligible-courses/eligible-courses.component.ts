@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CoursesService } from "./../../../services/courses.service";
 import { UserService } from "../../../services/user.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-eligible-courses",
@@ -13,16 +14,24 @@ export class EligibleCoursesComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private coursesService: CoursesService
-  ) {}
+    private coursesService: CoursesService,
+    private router: Router
+  ) {
+    const student = this.userService.getUser();
+    if (!student) {
+      this.router.navigate(["/"]);
+    } else {
+      this.coursesService
+        .updateEligibleCourses()
+        .subscribe(courses => (this.courses = courses));
+      this.title =
+        "Welcome " +
+        student.name +
+        ". The following are the eligible courses that can take on this semester.";
+    }
+  }
 
   ngOnInit(): void {
-    this.courses = this.coursesService.getEligibleCourses();
-    const userName = this.userService.getUser().name || "student";
-
-    this.title =
-      "Welcome " +
-      userName +
-      ". The following are the eligible courses that can take on this semester.";
+    this.coursesService.getEligibleCourses();
   }
 }

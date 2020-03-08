@@ -16,18 +16,22 @@ export class PrerequisiteCoursesComponent implements OnInit {
     private userService: UserService,
     private coursesService: CoursesService,
     private router: Router
-  ) {}
-
-  ngOnInit(): void {
+  ) {
     const student = this.userService.getUser();
     if (!student) {
       this.router.navigate(["/"]);
     } else {
-      this.courses = this.coursesService.getPrerequisiteCourses();
+      coursesService
+        .updatePrerequisiteCourses()
+        .subscribe(courses => (this.courses = courses));
+      this.title =
+        "Welcome " +
+        student.email +
+        ".  Please select a course to see its prerequisite .";
     }
-    this.title =
-      "Welcome " +
-      student.email +
-      ".  Please select a course to see its prerequisite .";
+  }
+
+  ngOnInit(): void {
+    this.coursesService.getPrerequisiteCourses();
   }
 }

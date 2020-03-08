@@ -12,7 +12,6 @@ export class PrerequisiteCourseComponent {
   isPreRequisitesShown = false;
 
   onClickCourse() {
-    console.log("click");
     this.isPreRequisitesShown = !this.isPreRequisitesShown;
   }
 }
