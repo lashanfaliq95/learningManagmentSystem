@@ -1,3 +1,4 @@
+import { UserService } from "./../../services/user.service";
 import { Component, Output, EventEmitter, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
@@ -12,26 +13,30 @@ export class DegreesComponent implements OnInit {
   @Output() degreeSelect = new EventEmitter();
   degrees;
 
-  constructor(private router: Router, private service: DegreeService) {}
+  constructor(
+    private router: Router,
+    private service: DegreeService,
+    private userService: UserService
+  ) {
+    console.log(this.degrees !== undefined);
+    if (!userService.getUser()) {
+      this.router.navigate(["/"]);
+    } else {
+      service.updateDegrees().subscribe(degrees => {
+        this.degrees = degrees;
+      });
+    }
+  }
 
   ngOnInit() {
-    this.degrees = this.service.getDegrees();
-    console.log(this.service.getDegrees);
+    this.service.getDegrees();
   }
 
   onContinue({ form }) {
-    console.log("id", form.value);
     const degreeId = form.value.degree;
     this.service.setCurrentDegree(degreeId);
-    const degreeName =
-      degreeId === "1" ? this.degrees[0].name : this.degrees[1].name;
     if (form.value.degree) {
-      this.router.navigate(["/majors"], {
-        queryParams: {
-          degreeId,
-          degreeName
-        }
-      });
+      this.router.navigate(["/majors"]);
     }
   }
 }

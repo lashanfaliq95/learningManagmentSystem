@@ -27,6 +27,7 @@ import { RegisterStudentComponent } from "./components/register-student/register
 import { CompletedAndRemainingCoursesComponent } from "./components/completed-and-remaining-courses/completed-and-remaining-courses.component";
 import { CoursesSummaryComponent } from "./components/courses-summary/courses-summary.component";
 import { SummaryOfCoursesComponent } from "./components/summary-of-courses/summary-of-courses.component";
+import { AdvisorSubstituteSelectionComponent } from "./components/advisor-substitute-selection/advisor-substitute-selection.component";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { SummaryOfCoursesComponent } from "./components/summary-of-courses/summa
     RegisterStudentComponent,
     CompletedAndRemainingCoursesComponent,
     CoursesSummaryComponent,
-    SummaryOfCoursesComponent
+    SummaryOfCoursesComponent,
+    AdvisorSubstituteSelectionComponent
   ],
   imports: [
     BrowserModule,

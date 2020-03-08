@@ -1,3 +1,4 @@
+import { DegreeService } from "./../../services/degree.service";
 import { MajorsService } from "./../../services/majors.service";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -13,14 +14,14 @@ export class MajorsComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private majorService: MajorsService
+    private majorService: MajorsService,
+    private degreeService: DegreeService
   ) {}
 
   ngOnInit() {
     this.route.queryParamMap.subscribe();
-    const degreeId = this.route.snapshot.queryParamMap.get("degreeId");
-    this.currentDegree = this.route.snapshot.queryParamMap.get("degreeName");
-    this.currentMajors = this.majorService.getMajors(degreeId);
+    this.currentDegree = this.degreeService.getCurrentDegree();
+    this.currentMajors = this.majorService.getMajors(this.currentDegree.id);
   }
 
   onContinue({ form }) {

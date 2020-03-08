@@ -1,22 +1,28 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Subject } from "rxjs";
 
 @Injectable({
   providedIn: "root"
 })
 export class DegreeService {
-  private url = "localhost";
-  degrees;
+  private url = "http://192.168.8.105:8080";
+  degrees: Subject<any> = new Subject<any>();
+  private allDegrees;
   currentDegreeId;
 
   constructor(private http: HttpClient) {}
 
   getDegrees() {
-    this.degrees = [
-      { id: "1", name: "BS.CSC" },
-      { id: "2", name: "BS.ITE" }
-    ];
-    return this.degrees;
+    this.http.get(this.url + "/degrees").subscribe({
+      next: res => {
+        this.allDegrees = res;
+        this.degrees.next(res);
+      },
+      error: err => {
+        this.degrees.next(null);
+      }
+    });
   }
 
   setCurrentDegree(id) {
@@ -24,6 +30,12 @@ export class DegreeService {
   }
 
   getCurrentDegree() {
-    return this.degrees.filter(degree => degree.id === this.currentDegreeId)[0];
+    return this.allDegrees.filter(
+      degree => degree.id === this.currentDegreeId
+    )[0];
+  }
+
+  updateDegrees() {
+    return this.degrees.asObservable();
   }
 }

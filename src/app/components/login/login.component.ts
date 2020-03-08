@@ -1,3 +1,4 @@
+import { UserService } from "./../../services/user.service";
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 
@@ -9,18 +10,14 @@ import { Router } from "@angular/router";
 export class LoginComponent {
   error;
   isStudent = true;
-  constructor(private router: Router) {}
+  constructor(private router: Router, private userService: UserService) {
+    this.userService.getError().subscribe(error => {
+      this.error = error;
+    });
+  }
 
-  onClickLogin(f) {
-    console.log(f.form.value);
-    if (
-      f.form.value.userName === "admin" &&
-      f.form.value.password === "admin"
-    ) {
-      this.router.navigate(["/degrees"]);
-    } else {
-      this.error = true;
-    }
+  onClickLogin({ form }) {
+    this.userService.login(form.value.userName, form.value.password);
   }
 
   onFocus() {
