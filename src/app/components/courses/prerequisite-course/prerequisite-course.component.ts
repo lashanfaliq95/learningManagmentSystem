@@ -8,7 +8,7 @@ import { Component, Input } from "@angular/core";
 export class PrerequisiteCourseComponent {
   @Input() courseId;
   @Input() courseName;
-  @Input() prerequisites;
+  @Input() prerequisite;
   isPreRequisitesShown = false;
 
   onClickCourse() {
