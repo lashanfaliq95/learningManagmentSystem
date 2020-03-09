@@ -175,4 +175,26 @@ export class CoursesService {
   updateUserCourses() {
     return this.userCourses.asObservable();
   }
+
+  getStudentCourses(userId) {
+    this.http.get(this.url + "/" + userId + "/courses").subscribe({
+      next: res => this.userCourses.next(res),
+      error: err => this.userCourses.next(null)
+    });
+  }
+
+  updateStudentCourses() {
+    return this.userCourses.asObservable();
+  }
+
+  substituteCourse(id, substitute) {
+    const userId = this.userService.getUser().id;
+    this.http
+      .post(this.url + "/" + userId + "/substitute/" + id, {
+        number: substitute
+      })
+      .subscribe({
+        next: res => console.log(res)
+      });
+  }
 }

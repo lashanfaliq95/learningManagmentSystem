@@ -1,6 +1,6 @@
 <h3>
-  Welcome (advisor name). Please select a student name to see the options for a
-  course substitution
+  Welcome {{ advisor.email }}. Please select a student name to see the options
+  for a course substitution
 </h3>
 <div class="containers">
   <div class="left-container card">
@@ -9,8 +9,9 @@
       <button
         *ngFor="let student of students"
         class="btn btn-info left-container-btn"
+        (click)="onClickStudent(student)"
       >
-        {{ student.name }}
+        {{ student.email }}
       </button>
     </div>
   </div>
@@ -18,9 +19,14 @@
     <h3>Add substitute to courses.</h3>
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let course of courses">
-        <span>{{ course.name }}</span>
-        <input name="substitute" />
-        <button class="btn btn-primary">Add substitute</button>
+        <span>{{ course.course.name }}</span>
+        <input name="substitute" ngModel #substitute="ngModel" />
+        <button
+          class="btn btn-primary"
+          (click)="onClickRegister(course.id, substitute.viewModel)"
+        >
+          Add substitute
+        </button>
       </li>
     </ul>
   </div>

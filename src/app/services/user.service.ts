@@ -11,6 +11,7 @@ export class UserService {
   private authenticatedUser: any;
 
   error: Subject<boolean> = new Subject<boolean>();
+  students: Subject<boolean> = new Subject<boolean>();
 
   constructor(private http: HttpClient, private router: Router) {}
 
@@ -45,6 +46,21 @@ export class UserService {
           this.error.next(true);
         }
       });
+  }
+
+  getStudents() {
+    this.http.get(this.url + "/users/students").subscribe({
+      next: res => {
+        const data: any = res;
+        console.log(data);
+        this.students.next(data);
+      },
+      error: err => console.error(err)
+    });
+  }
+
+  updateStudents() {
+    return this.students.asObservable();
   }
 
   logout() {
