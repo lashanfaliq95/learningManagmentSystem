@@ -1,3 +1,4 @@
+import { CoursesService } from "./../../services/courses.service";
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 
@@ -10,8 +11,17 @@ import { UserService } from "../../services/user.service";
 })
 export class SemesterMapComponent implements OnInit {
   title;
+  semesterCourses;
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private coursesService: CoursesService
+  ) {
+    this.coursesService
+      .updateSemesterCourses()
+      .subscribe(courses => (this.semesterCourses = courses));
+  }
 
   ngOnInit(): void {
     const userName = this.userService.getUser().name || "student";
@@ -21,5 +31,9 @@ export class SemesterMapComponent implements OnInit {
 
   onClickFinish() {
     this.router.navigate(["/selection"]);
+  }
+
+  onClickData(semester) {
+    this.coursesService.getCoursesForSemester(semester);
   }
 }

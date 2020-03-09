@@ -11,19 +11,27 @@
     </thead>
     <tbody>
       <tr>
-        <td>Semester 1</td>
-        <td>Semester 3</td>
-        <td>Semester 5</td>
-        <td>Semester 7</td>
+        <td (click)="onClickData(1)">Semester 1</td>
+        <td (click)="onClickData(3)">Semester 3</td>
+        <td (click)="onClickData(5)">Semester 5</td>
+        <td (click)="onClickData(7)">Semester 7</td>
       </tr>
       <tr>
-        <td>Semester 2</td>
-        <td>Semester 4</td>
-        <td>Semester 6</td>
-        <td>Semester 8</td>
+        <td (click)="onClickData(2)">Semester 2</td>
+        <td (click)="onClickData(4)">Semester 4</td>
+        <td (click)="onClickData(6)">Semester 6</td>
+        <td (click)="onClickData(8)">Semester 8</td>
       </tr>
     </tbody>
   </table>
+</div>
+<ul *ngIf="semesterCourses" class="list-group">
+  <li *ngFor="let course of semesterCourses" class="list-group-item">
+    {{ course.number }} {{ course.name }}
+  </li>
+</ul>
+<div class="warning" *ngIf="semesterCourses && semesterCourses.length === 0">
+  Selected Semester has no courses!
 </div>
 <button class="courseButton btn btn-primary" (click)="onClickFinish()">
   Finish

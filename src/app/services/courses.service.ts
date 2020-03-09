@@ -15,6 +15,7 @@ export class CoursesService {
   springCourses: Subject<any> = new Subject<any>();
   fallCourses: Subject<any> = new Subject<any>();
   allCourses: Subject<any> = new Subject<any>();
+  semesterCourses: Subject<any> = new Subject<any>();
 
   constructor(
     private http: HttpClient,
@@ -121,5 +122,16 @@ export class CoursesService {
           console.error(err);
         }
       });
+  }
+
+  getCoursesForSemester(semester) {
+    this.http.get(this.url + "/courses/semester/" + semester).subscribe({
+      next: res => this.semesterCourses.next(res),
+      error: err => this.semesterCourses.next(null)
+    });
+  }
+
+  updateSemesterCourses() {
+    return this.semesterCourses.asObservable();
   }
 }

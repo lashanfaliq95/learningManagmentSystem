@@ -1,4 +1,8 @@
-<li class="list-group-item togglable-course" (click)="onClickCourse()">
+<li
+  *ngIf="prerequisite"
+  class="list-group-item togglable-course"
+  (click)="onClickCourse()"
+>
   <span>{{ courseId }} {{ courseName }}</span>
   <span class="oi oi-chevron-bottom" *ngIf="!isPreRequisitesShown"></span>
   <span class="oi oi-chevron-top" *ngIf="isPreRequisitesShown"></span>
@@ -6,6 +10,7 @@
 <li
   class="list-group-item list-group-item-secondary register"
   [hidden]="!isPreRequisitesShown"
+  *ngIf="prerequisite"
 >
   <span>{{ prerequisite.id }} {{ prerequisite.name }}</span>
 </li>
