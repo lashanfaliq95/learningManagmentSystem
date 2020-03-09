@@ -18,9 +18,16 @@ export class CompletedAndRemainingCoursesComponent implements OnInit {
     private userService: UserService,
     private coursesService: CoursesService,
     private router: Router
-  ) {}
+  ) {
+    this.coursesService
+      .updateEligibleCourses()
+      .subscribe(courses => (this.remainingCourses = courses));
+    this.coursesService
+      .updateRegisteredCourses()
+      .subscribe(courses => (this.completedCourses = courses));
+  }
   ngOnInit(): void {
-    this.completedCourses = this.coursesService.getEligibleCourses();
+    this.completedCourses = this.coursesService.getRegisteredCourses();
     this.remainingCourses = this.coursesService.getEligibleCourses();
 
     const userName = this.userService.getUser().name || "student";

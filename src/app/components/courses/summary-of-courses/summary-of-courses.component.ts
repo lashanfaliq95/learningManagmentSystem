@@ -12,7 +12,7 @@ import { UserService } from "../../../services/user.service";
 })
 export class SummaryOfCoursesComponent implements OnInit {
   currentDegree;
-  allCourses;
+  allCourses = [];
   constructor(
     private router: Router,
     private degreeService: DegreeService,
@@ -24,14 +24,14 @@ export class SummaryOfCoursesComponent implements OnInit {
       this.router.navigate(["/"]);
     } else {
       this.courseService
-        .updateAllCourses()
+        .updateUserCourses()
         .subscribe(courses => (this.allCourses = courses));
     }
   }
 
   ngOnInit(): void {
     this.currentDegree = this.degreeService.getCurrentDegree();
-    this.courseService.getAllCourses();
+    this.courseService.getUserCourses();
   }
 
   onClickFinish() {

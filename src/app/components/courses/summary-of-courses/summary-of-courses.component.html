@@ -18,23 +18,25 @@
       <tbody>
         <tr *ngFor="let course of allCourses">
           <td>
-            {{ course.number }}
+            {{ course.course.number }}
             <span
               class="oi oi-media-stop icon-green"
-              *ngIf="course.eligible"
+              *ngIf="course.status === 'ELIGIBLE'"
             ></span>
           </td>
-          <td>{{ course.Substitute }}</td>
+          <td>
+            {{ course.course.substitute && course.course.substitute.name }}
+          </td>
           <td>
             <span
               class="oi oi-circle-check icon-green"
-              *ngIf="course.registered"
+              *ngIf="course.status === 'ELIGIBLE'"
             ></span>
           </td>
-          <td>{{ course.name }}</td>
-          <td>{{ course.credits }}</td>
+          <td>{{ course.course.name }}</td>
+          <td>{{ course.course.credits }}</td>
           <td>
-            {{ course.prerequisite && course.prerequisite.courseId }}
+            {{ course.course.prerequisite && course.course.prerequisite.name }}
           </td>
         </tr>
       </tbody>

@@ -16,6 +16,8 @@ export class CoursesService {
   fallCourses: Subject<any> = new Subject<any>();
   allCourses: Subject<any> = new Subject<any>();
   semesterCourses: Subject<any> = new Subject<any>();
+  completedCourses: Subject<any> = new Subject<any>();
+  userCourses: Subject<any> = new Subject<any>();
 
   constructor(
     private http: HttpClient,
@@ -46,6 +48,27 @@ export class CoursesService {
     return this.eligibleCourses.asObservable();
   }
 
+  getRegisteredCourses() {
+    console.log(
+      this.userService.getUser(),
+      this.majorService.getCurrentMajor()
+    );
+
+    const userId = this.userService.getUser().id;
+    const majorId = this.majorService.getCurrentMajor();
+    console.log("here");
+    this.http
+      .get(this.url + "/" + userId + "/" + majorId + "/courses/REGISTERED")
+      .subscribe({
+        next: res => this.completedCourses.next(res),
+        error: err => this.completedCourses.next(null)
+      });
+  }
+
+  updateRegisteredCourses() {
+    return this.completedCourses.asObservable();
+  }
+
   getPrerequisiteCourses() {
     this.http.get(this.url + "/courses/prerequisites").subscribe({
       next: res => this.coursesWithPrerequisites.next(res),
@@ -58,10 +81,14 @@ export class CoursesService {
   }
 
   getSpringCourses() {
-    this.http.get(this.url + "/courses/season/SPRING").subscribe({
-      next: res => this.springCourses.next(res),
-      error: err => this.springCourses.next(null)
-    });
+    const majorId = this.majorService.getCurrentMajor();
+
+    this.http
+      .get(this.url + "/courses/" + majorId + "/season/SPRING")
+      .subscribe({
+        next: res => this.springCourses.next(res),
+        error: err => this.springCourses.next(null)
+      });
   }
 
   updateSpringCourses() {
@@ -69,7 +96,9 @@ export class CoursesService {
   }
 
   getFallCourses() {
-    this.http.get(this.url + "/courses/season/FALL").subscribe({
+    const majorId = this.majorService.getCurrentMajor();
+
+    this.http.get(this.url + "/courses/" + majorId + "/season/FALL").subscribe({
       next: res => this.fallCourses.next(res),
       error: err => this.fallCourses.next(null)
     });
@@ -133,5 +162,17 @@ export class CoursesService {
 
   updateSemesterCourses() {
     return this.semesterCourses.asObservable();
+  }
+
+  getUserCourses() {
+    const userId = this.userService.getUser().id;
+    this.http.get(this.url + "/" + userId + "/courses").subscribe({
+      next: res => this.userCourses.next(res),
+      error: err => this.userCourses.next(null)
+    });
+  }
+
+  updateUserCourses() {
+    return this.userCourses.asObservable();
   }
 }
