@@ -34,7 +34,7 @@
           <td>{{ course.name }}</td>
           <td>{{ course.credits }}</td>
           <td>
-            {{ (course.prerequisites && course.prerequisites.name) || null }}
+            {{ course.prerequisite && course.prerequisite.courseId }}
           </td>
         </tr>
       </tbody>

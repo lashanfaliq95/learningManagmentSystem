@@ -26,7 +26,7 @@ export class EligibleCoursesComponent implements OnInit {
         .subscribe(courses => (this.courses = courses));
       this.title =
         "Welcome " +
-        student.name +
+        student.email +
         ". The following are the eligible courses that can take on this semester.";
     }
   }

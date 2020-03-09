@@ -20,15 +20,14 @@ export class RegisterStudentComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.courses = this.coursesService.getEligibleCourses();
-    const userName = this.userService.getUser().name || "student";
+    const username = this.userService.getUser();
+    const displayName = (username && username.name) || "student";
 
     this.title =
-      "Welcome " + userName + ".Please type your Advisor's name and email ID.";
+      "Welcome " + displayName + ".Please type your Advisor's email ID.";
   }
 
-  onContinue(form) {
-    console.log(form);
-    this.router.navigate(["/selection"]);
+  onContinue(data) {
+    this.coursesService.sendEmail(data.viewModel);
   }
 }

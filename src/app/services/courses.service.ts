@@ -1,6 +1,9 @@
-import { Injectable } from "@angular/core";
+import { MajorsService } from "./majors.service";
+import { UserService } from "./user.service";
+import { Injectable, ɵConsole } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Subject } from "rxjs";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root"
@@ -13,365 +16,29 @@ export class CoursesService {
   fallCourses: Subject<any> = new Subject<any>();
   allCourses: Subject<any> = new Subject<any>();
 
-  // courses = [
-  //   {
-  //     id: "1",
-  //     number: "CSC 01",
-  //     prerequisites: null,
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "1",
-  //     courseName: "Spartan summer",
-  //     registered: true
-  //   },
-  //   {
-  //     id: "2",
-  //     number: "CSC 280",
-  //     prerequisites: [
-  //       { id: "3", name: "CSC 260" },
-  //       { id: "4", name: "CSC 270" }
-  //     ],
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "2",
-  //     courseName: "Applied sceience Seminar",
-  //     registered: true
-  //   },
-  //   {
-  //     id: "1",
-  //     number: "CSC 01",
-  //     prerequisites: null,
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "1",
-  //     courseName: "Spartan summer",
-  //     registered: true
-  //   },
-  //   {
-  //     id: "2",
-  //     number: "CSC 280",
-  //     prerequisites: [
-  //       { id: "3", name: "CSC 260" },
-  //       { id: "4", name: "CSC 270" }
-  //     ],
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "2",
-  //     courseName: "Applied sceience Seminar",
-  //     registered: true
-  //   },
-  //   {
-  //     id: "1",
-  //     number: "CSC 01",
-  //     prerequisites: null,
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "1",
-  //     courseName: "Spartan summer",
-  //     registered: true
-  //   },
-  //   {
-  //     id: "2",
-  //     number: "CSC 280",
-  //     prerequisites: [
-  //       { id: "3", name: "CSC 260" },
-  //       { id: "4", name: "CSC 270" }
-  //     ],
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "2",
-  //     courseName: "Applied sceience Seminar",
-  //     registered: true
-  //   },
-  //   {
-  //     id: "1",
-  //     number: "CSC 01",
-  //     prerequisites: null,
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "1",
-  //     courseName: "Spartan summer",
-  //     registered: true
-  //   },
-  //   {
-  //     id: "2",
-  //     number: "CSC 280",
-  //     prerequisites: [
-  //       { id: "3", name: "CSC 260" },
-  //       { id: "4", name: "CSC 270" }
-  //     ],
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "2",
-  //     courseName: "Applied sceience Seminar",
-  //     registered: true
-  //   },
-  //   {
-  //     id: "1",
-  //     number: "CSC 01",
-  //     prerequisites: null,
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "1",
-  //     courseName: "Spartan summer",
-  //     registered: true
-  //   },
-  //   {
-  //     id: "2",
-  //     number: "CSC 280",
-  //     prerequisites: [
-  //       { id: "3", name: "CSC 260" },
-  //       { id: "4", name: "CSC 270" }
-  //     ],
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "2",
-  //     courseName: "Applied sceience Seminar",
-  //     registered: true
-  //   }
-  // ];
-
-  // prerequisiteCourses = [
-  //   {
-  //     id: "1",
-  //     number: "CSC 01",
-  //     prerequisites: [
-  //       { id: "5", name: "CSC 220" },
-  //       { id: "6", name: "CSC 230" }
-  //     ],
-  //     credits: 3,
-  //     subustitutes: "CSS 01",
-  //     AcademicTerm: "1",
-  //     courseName: "Spartan summer"
-  //   },
-  //   {
-  //     id: "2",
-  //     number: "CSC 280",
-  //     prerequisites: [
-  //       { id: "3", name: "CSC 260" },
-  //       { id: "4", name: "CSC 270" }
-  //     ],
-  //     credits: 3,
-  //     subustitutes: "CSS 01",
-  //     AcademicTerm: "2",
-  //     courseName: "Applied sceience Seminar"
-  //   },
-  //   {
-  //     id: "1",
-  //     number: "CSC 01",
-  //     prerequisites: [
-  //       { id: "5", name: "CSC 220" },
-  //       { id: "6", name: "CSC 230" }
-  //     ],
-  //     credits: 3,
-  //     subustitutes: "CSS 01",
-  //     AcademicTerm: "1",
-  //     courseName: "Spartan summer"
-  //   },
-  //   {
-  //     id: "2",
-  //     number: "CSC 280",
-  //     prerequisites: [
-  //       { id: "3", name: "CSC 260" },
-  //       { id: "4", name: "CSC 270" }
-  //     ],
-  //     credits: 3,
-  //     subustitutes: "CSS 01",
-  //     AcademicTerm: "2",
-  //     courseName: "Applied sceience Seminar"
-  //   },
-  //   {
-  //     id: "1",
-  //     number: "CSC 01",
-  //     prerequisites: [
-  //       { id: "5", name: "CSC 220" },
-  //       { id: "6", name: "CSC 230" }
-  //     ],
-  //     credits: 3,
-  //     subustitutes: "CSS 01",
-  //     AcademicTerm: "1",
-  //     courseName: "Spartan summer"
-  //   },
-  //   {
-  //     id: "2",
-  //     number: "CSC 280",
-  //     prerequisites: [
-  //       { id: "3", name: "CSC 260" },
-  //       { id: "4", name: "CSC 270" }
-  //     ],
-  //     credits: 3,
-  //     subustitutes: "CSS 01",
-  //     AcademicTerm: "2",
-  //     courseName: "Applied sceience Seminar"
-  //   },
-  //   {
-  //     id: "1",
-  //     number: "CSC 01",
-  //     prerequisites: [
-  //       { id: "5", name: "CSC 220" },
-  //       { id: "6", name: "CSC 230" }
-  //     ],
-  //     credits: 3,
-  //     subustitutes: "CSS 01",
-  //     AcademicTerm: "1",
-  //     courseName: "Spartan summer"
-  //   },
-  //   {
-  //     id: "2",
-  //     number: "CSC 280",
-  //     prerequisites: [
-  //       { id: "3", name: "CSC 260" },
-  //       { id: "4", name: "CSC 270" }
-  //     ],
-  //     credits: 3,
-  //     subustitutes: "CSS 01",
-  //     AcademicTerm: "2",
-  //     courseName: "Applied sceience Seminar"
-  //   }
-  // ];
-
-  // allCourses = [
-  //   {
-  //     id: "1",
-  //     number: "CSC 01",
-  //     prerequisites: null,
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "1",
-  //     courseName: "Spartan summer",
-  //     registered: true,
-  //     eligible: false
-  //   },
-  //   {
-  //     id: "2",
-  //     number: "CSC 280",
-  //     prerequisites: { id: "3", name: "CSC 260" },
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "2",
-  //     courseName: "Applied sceience Seminar",
-  //     registered: false,
-  //     eligible: true
-  //   },
-  //   {
-  //     id: "1",
-  //     number: "CSC 01",
-  //     prerequisites: null,
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "1",
-  //     courseName: "Spartan summer",
-  //     registered: true,
-  //     eligible: false
-  //   },
-  //   {
-  //     id: "2",
-  //     number: "CSC 280",
-  //     prerequisites: { id: "3", name: "CSC 260" },
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "2",
-  //     courseName: "Applied sceience Seminar",
-  //     registered: false,
-  //     eligible: true
-  //   },
-  //   {
-  //     id: "1",
-  //     number: "CSC 01",
-  //     prerequisites: null,
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "1",
-  //     courseName: "Spartan summer",
-  //     registered: true,
-  //     eligible: false
-  //   },
-  //   {
-  //     id: "2",
-  //     number: "CSC 280",
-  //     prerequisites: { id: "3", name: "CSC 260" },
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "2",
-  //     courseName: "Applied sceience Seminar",
-  //     registered: false,
-  //     eligible: true
-  //   },
-  //   {
-  //     id: "1",
-  //     number: "CSC 01",
-  //     prerequisites: null,
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "1",
-  //     courseName: "Spartan summer",
-  //     registered: true,
-  //     eligible: false
-  //   },
-  //   {
-  //     id: "2",
-  //     number: "CSC 280",
-  //     prerequisites: { id: "3", name: "CSC 260" },
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "2",
-  //     courseName: "Applied sceience Seminar",
-  //     registered: false,
-  //     eligible: true
-  //   },
-  //   {
-  //     id: "1",
-  //     number: "CSC 01",
-  //     prerequisites: null,
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "1",
-  //     courseName: "Spartan summer",
-  //     registered: true,
-  //     eligible: false
-  //   },
-  //   {
-  //     id: "2",
-  //     number: "CSC 280",
-  //     prerequisites: { id: "3", name: "CSC 260" },
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "2",
-  //     courseName: "Applied sceience Seminar",
-  //     registered: false,
-  //     eligible: true
-  //   },
-  //   {
-  //     id: "1",
-  //     number: "CSC 01",
-  //     prerequisites: null,
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "1",
-  //     courseName: "Spartan summer",
-  //     registered: true,
-  //     eligible: false
-  //   },
-  //   {
-  //     id: "2",
-  //     number: "CSC 280",
-  //     prerequisites: { id: "3", name: "CSC 260" },
-  //     credits: 3,
-  //     Substitute: "CSS 01",
-  //     AcademicTerm: "2",
-  //     courseName: "Applied sceience Seminar",
-  //     registered: false,
-  //     eligible: true
-  //   }
-  // ];
-
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private userService: UserService,
+    private majorService: MajorsService,
+    private router: Router
+  ) {}
 
   getEligibleCourses() {
-    this.http.get(this.url + "/courses/prerequisites").subscribe({
-      next: res => this.eligibleCourses.next(res),
-      error: err => this.eligibleCourses.next(null)
-    });
+    console.log(
+      "here",
+      this.userService.getUser(),
+      this.majorService.getCurrentMajor()
+    );
+
+    const userId = this.userService.getUser().id;
+    const majorId = this.majorService.getCurrentMajor();
+    console.log("here");
+    this.http
+      .get(this.url + "/" + userId + "/" + majorId + "/courses/ELIGIBLE")
+      .subscribe({
+        next: res => this.eligibleCourses.next(res),
+        error: err => this.eligibleCourses.next(null)
+      });
   }
 
   updateEligibleCourses() {
@@ -390,7 +57,7 @@ export class CoursesService {
   }
 
   getSpringCourses() {
-    this.http.get(this.url + "/courses/prerequisites").subscribe({
+    this.http.get(this.url + "/courses/season/SPRING").subscribe({
       next: res => this.springCourses.next(res),
       error: err => this.springCourses.next(null)
     });
@@ -401,7 +68,7 @@ export class CoursesService {
   }
 
   getFallCourses() {
-    this.http.get(this.url + "/courses/prerequisites").subscribe({
+    this.http.get(this.url + "/courses/season/FALL").subscribe({
       next: res => this.fallCourses.next(res),
       error: err => this.fallCourses.next(null)
     });
@@ -422,7 +89,37 @@ export class CoursesService {
     return this.allCourses.asObservable();
   }
 
-  registerCourse() {
-    this.http.post(this.url, {});
+  registerCourse(id) {
+    console.log("here");
+    const userId = this.userService.getUser().id;
+    console.log(this.url + "/" + userId + "/courses/apply");
+    this.http
+      .post(this.url + "/" + userId + "/courses/apply", { id })
+      .subscribe({
+        next: res => {
+          const data: any = res;
+          console.log(data);
+        },
+        error: err => {
+          console.error(err);
+        }
+      });
+  }
+
+  sendEmail(email) {
+    const userId = this.userService.getUser().id;
+    this.http
+      .post(this.url + "/" + userId + "/register", {
+        email
+      })
+      .subscribe({
+        next: res => {
+          const data: any = res;
+          this.router.navigate(["/selection"]);
+        },
+        error: err => {
+          console.error(err);
+        }
+      });
   }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { CoursesService } from "./../../../services/courses.service";
+import { Component, Input } from "@angular/core";
 
 @Component({
   selector: "registerable-course",
@@ -9,7 +10,13 @@ export class RegisterableCourseComponent {
   @Input() courseId;
   @Input() courseName;
   isRegisterShown = false;
+  constructor(private courseService: CoursesService) {}
+
   onClickCourse() {
     this.isRegisterShown = !this.isRegisterShown;
+  }
+
+  onClickRegister() {
+    this.courseService.registerCourse(this.courseId);
   }
 }

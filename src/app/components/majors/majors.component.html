@@ -16,6 +16,16 @@
     <button class="btn btn-primary">Continue</button>
   </form>
 </div>
-<div *ngIf="currentMajors && currentMajors.length === 0" class="warning">
+<div *ngIf="!currentMajors" class="warning">
   Something Went Wrong! Please try again later.
+</div>
+<div
+  *ngIf="currentMajors && currentMajors.length === 0"
+  class="warning vertical-align"
+>
+  <span>
+    This degree doesn't contain any specializations. Please select a different
+    degree to continue.
+  </span>
+  <button class="btn btn-primary" (click)="onClickBack()">Go Back</button>
 </div>

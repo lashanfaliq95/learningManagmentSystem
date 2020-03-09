@@ -32,6 +32,10 @@ export class MajorsComponent implements OnInit {
     this.majorService.getMajors(this.currentDegree.id);
   }
 
+  onClickBack() {
+    this.router.navigate(["/degrees"]);
+  }
+
   onContinue({ form }) {
     const majorId = form.value.major;
     if (majorId) {

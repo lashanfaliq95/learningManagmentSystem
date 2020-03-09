@@ -14,22 +14,30 @@ export class UserService {
 
   constructor(private http: HttpClient, private router: Router) {}
 
-  login(email, password) {
+  login(email, password, isStudent) {
+    const role = isStudent ? "student" : "adviser";
+    const apiUrl = isStudent ? "/student/auth" : "/adviser/auth";
+    console.log("role", role);
     this.http
-      .post(this.url + "/student/auth", {
+      .post(this.url + apiUrl, {
         email,
         password,
-        role: "student",
+        role,
         curentSemester: 1,
         authenticate: "shouldAuthenticate"
       })
       .subscribe({
         next: res => {
           const data: any = res;
+          console.log(data);
           this.setUser(data);
           this.error.next(false);
           if (data.authenticate === "TRUE") {
-            this.router.navigate(["/degrees"]);
+            if (isStudent) {
+              this.router.navigate(["/degrees"]);
+            } else {
+              this.router.navigate(["/substituteCourses"]);
+            }
           }
         },
         error: err => {
@@ -48,6 +56,7 @@ export class UserService {
   }
 
   setUser(authenticatedUser) {
+    localStorage.setItem("user", authenticatedUser);
     this.authenticatedUser = authenticatedUser;
   }
 

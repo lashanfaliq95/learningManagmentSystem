@@ -18,7 +18,11 @@ export class LoginComponent {
   }
 
   onClickLogin({ form }) {
-    this.userService.login(form.value.userName, form.value.password);
+    this.userService.login(
+      form.value.userName,
+      form.value.password,
+      this.isStudent
+    );
   }
 
   onFocus() {
