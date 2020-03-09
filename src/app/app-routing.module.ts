@@ -12,6 +12,7 @@ import { CoursesInSpringSemesterComponent } from "./components/courses/courses-i
 import { RegisterStudentComponent } from "./components/register-student/register-student.component";
 import { CompletedAndRemainingCoursesComponent } from "./components/completed-and-remaining-courses/completed-and-remaining-courses.component";
 import { SummaryOfCoursesComponent } from "./components/courses/summary-of-courses/summary-of-courses.component";
+import { AdvisorSubstituteSelectionComponent } from "./components/advisor-substitute-selection/advisor-substitute-selection.component";
 
 const routes: Routes = [
   {
@@ -61,6 +62,10 @@ const routes: Routes = [
   {
     path: "summaryOfComponents",
     component: SummaryOfCoursesComponent
+  },
+  {
+    path: "substituteCourses",
+    component: AdvisorSubstituteSelectionComponent
   }
 ];
 

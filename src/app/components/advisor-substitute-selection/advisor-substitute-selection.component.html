@@ -1,1 +1,27 @@
-<p>advisor-substitute-selection works!</p>
+<h3>
+  Welcome (advisor name). Please select a student name to see the options for a
+  course substitution
+</h3>
+<div class="containers">
+  <div class="left-container card">
+    <h3>Students</h3>
+    <div class="btn-group-vertical">
+      <button
+        *ngFor="let student of students"
+        class="btn btn-info left-container-btn"
+      >
+        {{ student.name }}
+      </button>
+    </div>
+  </div>
+  <div class="right-container card">
+    <h3>Add substitute to courses.</h3>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let course of courses">
+        <span>{{ course.name }}</span>
+        <input name="substitute" />
+        <button class="btn btn-primary">Add substitute</button>
+      </li>
+    </ul>
+  </div>
+</div>

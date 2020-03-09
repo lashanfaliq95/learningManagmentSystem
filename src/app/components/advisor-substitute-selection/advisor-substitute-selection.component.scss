@@ -1,0 +1,59 @@
+.left-container {
+  align-self: flex-end;
+  align-items: center;
+  padding: 10px;
+  overflow-y: scroll;
+  height: 800px;
+  width: 25%;
+  margin-left: 10px;
+  overflow-x: hidden;
+}
+
+.right-container {
+  width: 75%;
+  align-self: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  height: 800px;
+  margin-left: 10px;
+  overflow: hidden;
+}
+
+.containers {
+  display: flex;
+  padding: 10px;
+}
+
+.list-group-item {
+  display: flex;
+  width: 770px;
+  align-self: center;
+
+  span {
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100px;
+  }
+  button {
+    margin-right: 10px;
+    float: right;
+  }
+  input {
+    width: 400px;
+    margin-right: 30px;
+  }
+}
+
+.list-group {
+  max-height: 700px;
+}
+
+.left-container-btn {
+  width: 400px;
+  margin-bottom: 2px;
+}
+
+.btn-group-vertical {
+  align-items: center;
+}
