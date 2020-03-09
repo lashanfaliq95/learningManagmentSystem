@@ -23,7 +23,7 @@
         <input name="substitute" ngModel #substitute="ngModel" />
         <button
           class="btn btn-primary"
-          (click)="onClickRegister(course.id, substitute.viewModel)"
+          (click)="onClickRegister(course.course.id, substitute.viewModel)"
         >
           Add substitute
         </button>
