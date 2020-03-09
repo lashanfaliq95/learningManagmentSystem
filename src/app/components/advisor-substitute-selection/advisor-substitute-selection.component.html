@@ -20,7 +20,12 @@
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let course of courses">
         <span>{{ course.course.name }}</span>
-        <input name="substitute" ngModel #substitute="ngModel" />
+        <input
+          name="substitute"
+          ngModel
+          #substitute="ngModel"
+          placeholder="Please enter course number to substitute."
+        />
         <button
           class="btn btn-primary"
           (click)="onClickRegister(course.course.id, substitute.viewModel)"

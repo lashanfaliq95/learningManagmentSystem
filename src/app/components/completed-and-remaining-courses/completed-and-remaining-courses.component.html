@@ -36,12 +36,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let completedCourse of completedCourses">
+        <tr *ngFor="let remainingCourse of remainingCourses">
           <td>
-            <span>{{ completedCourse.number }}</span>
+            <span>{{ remainingCourse.number }}</span>
           </td>
           <td>
-            <span>{{ completedCourse.semester.season }}</span>
+            <span>{{ remainingCourse.semester.season }}</span>
           </td>
         </tr>
       </tbody>

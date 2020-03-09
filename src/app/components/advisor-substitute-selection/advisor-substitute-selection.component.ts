@@ -12,6 +12,7 @@ export class AdvisorSubstituteSelectionComponent implements OnInit {
   students;
   courses;
   advisor;
+  student;
   constructor(
     private userService: UserService,
     private courseServices: CoursesService,
@@ -35,10 +36,11 @@ export class AdvisorSubstituteSelectionComponent implements OnInit {
   }
 
   onClickStudent(student) {
+    this.student = student.id;
     this.courseServices.getStudentCourses(student.id);
   }
 
   onClickRegister(id, substitute) {
-    this.courseServices.substituteCourse(id, substitute);
+    this.courseServices.substituteCourse(id, substitute, this.student);
   }
 }

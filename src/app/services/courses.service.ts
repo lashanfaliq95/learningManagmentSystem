@@ -18,6 +18,7 @@ export class CoursesService {
   semesterCourses: Subject<any> = new Subject<any>();
   completedCourses: Subject<any> = new Subject<any>();
   userCourses: Subject<any> = new Subject<any>();
+  substitutedCourses: Subject<any> = new Subject<any>();
 
   constructor(
     private http: HttpClient,
@@ -187,8 +188,7 @@ export class CoursesService {
     return this.userCourses.asObservable();
   }
 
-  substituteCourse(id, substitute) {
-    const userId = this.userService.getUser().id;
+  substituteCourse(id, substitute, userId) {
     this.http
       .post(this.url + "/" + userId + "/substitute/" + id, {
         number: substitute
