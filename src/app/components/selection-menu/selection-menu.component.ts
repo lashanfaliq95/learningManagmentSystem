@@ -54,6 +54,11 @@ export class SelectionMenuComponent implements OnInit {
       id: "8",
       message: "Summary of Courses",
       redirectUrl: "/summaryOfComponents"
+    },
+    {
+      id: "9",
+      message: "Select current Semester",
+      redirectUrl: "/selectSemester"
     }
   ];
 

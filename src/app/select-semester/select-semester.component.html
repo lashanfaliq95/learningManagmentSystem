@@ -1,0 +1,14 @@
+<h3>Select the current semester!</h3>
+<ul class="list-group card">
+  <li
+    *ngFor="let semester of semesters"
+    class="list-group-item justified"
+    (click)="onClickSemester(semester)"
+  >
+    {{ semester.number }}{{ semester.season }}
+  </li>
+</ul>
+<div class="alert alert-success" role="alert" *ngIf="currentSemester">
+  Semester {{ currentSemester.currentSemester }} selected!
+</div>
+<button class="btn btn-primary" (click)="onClickFinish()">Back</button>

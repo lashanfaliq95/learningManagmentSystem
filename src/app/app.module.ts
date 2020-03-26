@@ -28,6 +28,7 @@ import { CompletedAndRemainingCoursesComponent } from "./components/completed-an
 import { CoursesSummaryComponent } from "./components/courses-summary/courses-summary.component";
 import { SummaryOfCoursesComponent } from "./components/courses/summary-of-courses/summary-of-courses.component";
 import { AdvisorSubstituteSelectionComponent } from "./components/advisor-substitute-selection/advisor-substitute-selection.component";
+import { SelectSemesterComponent } from './select-semester/select-semester.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { AdvisorSubstituteSelectionComponent } from "./components/advisor-substi
     CompletedAndRemainingCoursesComponent,
     CoursesSummaryComponent,
     SummaryOfCoursesComponent,
-    AdvisorSubstituteSelectionComponent
+    AdvisorSubstituteSelectionComponent,
+    SelectSemesterComponent
   ],
   imports: [
     BrowserModule,

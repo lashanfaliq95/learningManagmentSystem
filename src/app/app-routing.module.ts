@@ -1,3 +1,4 @@
+import { SelectSemesterComponent } from "./select-semester/select-semester.component";
 import { SelectionMenuComponent } from "./components/selection-menu/selection-menu.component";
 import { LoginComponent } from "./components/login/login.component";
 import { DegreesComponent } from "./components/degrees/degrees.component";
@@ -66,6 +67,10 @@ const routes: Routes = [
   {
     path: "substituteCourses",
     component: AdvisorSubstituteSelectionComponent
+  },
+  {
+    path: "selectSemester",
+    component: SelectSemesterComponent
   }
 ];
 

@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 })
 export class CoursesService {
   private url = "http://192.168.8.105:8080";
+
   eligibleCourses: Subject<any> = new Subject<any>();
   coursesWithPrerequisites: Subject<any> = new Subject<any>();
   springCourses: Subject<any> = new Subject<any>();
@@ -19,6 +20,8 @@ export class CoursesService {
   completedCourses: Subject<any> = new Subject<any>();
   userCourses: Subject<any> = new Subject<any>();
   substitutedCourses: Subject<any> = new Subject<any>();
+  semesters: Subject<any> = new Subject<any>();
+  currentSemester: Subject<any> = new Subject<any>();
 
   constructor(
     private http: HttpClient,
@@ -184,5 +187,33 @@ export class CoursesService {
       .subscribe({
         next: res => res
       });
+  }
+
+  getSemesters() {
+    this.http.get(this.url + "/semesters").subscribe({
+      next: res => this.semesters.next(res),
+      error: err => this.semesters.next(null)
+    });
+  }
+
+  updateSemesters() {
+    return this.semesters.asObservable();
+  }
+
+  setCurrentSemester(number) {
+    const userId = this.userService.getUser().id;
+
+    this.http
+      .post(this.url + "/" + userId + "/currentSemester", {
+        currentSemester: number
+      })
+      .subscribe({
+        next: res => this.currentSemester.next(res),
+        error: err => this.currentSemester.next(null)
+      });
+  }
+
+  updateCurrentSemester() {
+    return this.currentSemester.asObservable();
   }
 }
