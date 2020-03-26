@@ -15,7 +15,6 @@ export class CoursesComponent {
   constructor(private router: Router) {}
 
   onClickFinish() {
-    console.log("allowRegister", this.allowRegister);
     this.router.navigate(["/selection"]);
   }
 }

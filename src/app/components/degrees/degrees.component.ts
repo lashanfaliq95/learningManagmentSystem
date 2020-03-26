@@ -18,7 +18,6 @@ export class DegreesComponent implements OnInit {
     private service: DegreeService,
     private userService: UserService
   ) {
-    console.log(this.degrees !== undefined);
     if (!userService.getUser()) {
       this.router.navigate(["/"]);
     } else {

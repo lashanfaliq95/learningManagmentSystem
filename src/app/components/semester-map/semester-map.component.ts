@@ -26,7 +26,10 @@ export class SemesterMapComponent implements OnInit {
   ngOnInit(): void {
     const userName = this.userService.getUser().name || "student";
     this.title =
-      "Welcome " + userName + ". The following is the map of your semesters.";
+      "Welcome " +
+      userName +
+      ". The following is the map of your semesters." +
+      "Select a semester to see applied / registered courses of each semester.";
   }
 
   onClickFinish() {

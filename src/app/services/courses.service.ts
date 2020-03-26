@@ -28,15 +28,8 @@ export class CoursesService {
   ) {}
 
   getEligibleCourses() {
-    console.log(
-      "here",
-      this.userService.getUser(),
-      this.majorService.getCurrentMajor()
-    );
-
     const userId = this.userService.getUser().id;
     const majorId = this.majorService.getCurrentMajor();
-    console.log("here");
     this.http
       .get(this.url + "/" + userId + "/" + majorId + "/courses/ELIGIBLE")
       .subscribe({
@@ -50,14 +43,8 @@ export class CoursesService {
   }
 
   getRegisteredCourses() {
-    console.log(
-      this.userService.getUser(),
-      this.majorService.getCurrentMajor()
-    );
-
     const userId = this.userService.getUser().id;
     const majorId = this.majorService.getCurrentMajor();
-    console.log("here");
     this.http
       .get(this.url + "/" + userId + "/" + majorId + "/courses/REGISTERED")
       .subscribe({
@@ -71,10 +58,14 @@ export class CoursesService {
   }
 
   getPrerequisiteCourses() {
-    this.http.get(this.url + "/courses/prerequisites").subscribe({
-      next: res => this.coursesWithPrerequisites.next(res),
-      error: err => this.coursesWithPrerequisites.next(null)
-    });
+    const majorId = this.majorService.getCurrentMajor();
+
+    this.http
+      .get(this.url + "/" + majorId + "/courses/prerequisites")
+      .subscribe({
+        next: res => this.coursesWithPrerequisites.next(res),
+        error: err => this.coursesWithPrerequisites.next(null)
+      });
   }
 
   updatePrerequisiteCourses() {
@@ -121,15 +112,12 @@ export class CoursesService {
   }
 
   registerCourse(id) {
-    console.log("here");
     const userId = this.userService.getUser().id;
-    console.log(this.url + "/" + userId + "/courses/apply");
     this.http
       .post(this.url + "/" + userId + "/courses/apply", { id })
       .subscribe({
         next: res => {
           const data: any = res;
-          console.log(data);
         },
         error: err => {
           console.error(err);
@@ -194,7 +182,7 @@ export class CoursesService {
         number: substitute
       })
       .subscribe({
-        next: res => console.log(res)
+        next: res => res
       });
   }
 }

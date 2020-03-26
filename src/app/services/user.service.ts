@@ -18,7 +18,6 @@ export class UserService {
   login(email, password, isStudent) {
     const role = isStudent ? "student" : "adviser";
     const apiUrl = isStudent ? "/student/auth" : "/adviser/auth";
-    console.log("role", role);
     this.http
       .post(this.url + apiUrl, {
         email,
@@ -30,7 +29,6 @@ export class UserService {
       .subscribe({
         next: res => {
           const data: any = res;
-          console.log(data);
           this.setUser(data);
           this.error.next(false);
           if (data.authenticate === "TRUE") {
@@ -52,7 +50,6 @@ export class UserService {
     this.http.get(this.url + "/users/students").subscribe({
       next: res => {
         const data: any = res;
-        console.log(data);
         this.students.next(data);
       },
       error: err => console.error(err)

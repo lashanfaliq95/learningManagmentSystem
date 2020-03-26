@@ -65,7 +65,6 @@ export class SelectionMenuComponent implements OnInit {
 
   ngOnInit() {
     this.student = this.userService.getUser();
-    console.log(this.student);
     if (!this.student) {
       this.router.navigate(["/"]);
     } else {
@@ -74,11 +73,9 @@ export class SelectionMenuComponent implements OnInit {
   }
 
   onContinue({ form }) {
-    console.log("form", form.value);
     const currentSelection = this.selectionMapping.filter(
       selection => selection.id === form.value.selection
     )[0];
-    console.log(currentSelection);
     if (currentSelection) {
       this.router.navigate([currentSelection.redirectUrl]);
     }
